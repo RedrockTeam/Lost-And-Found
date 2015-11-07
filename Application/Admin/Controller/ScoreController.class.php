@@ -14,6 +14,6 @@ class ScoreController extends CommonController {
      * 积分列表页面
      */
     public function index() {
-
+//        $this->display();
     }
 }

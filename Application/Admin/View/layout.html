@@ -38,37 +38,39 @@
     <div class="header">
         <ul class="headermenu">
             <li class="current"><a href="{:U('Admin/Index/index')}"><span class="icon icon-flatscreen"></span>首页</a></li>
-            <li><a href="{:U('Admin/Rbac/index')}"><span class="icon icon-pencil"></span>用户权限</a></li>
-            <li><a href="#"><span class="icon icon-message"></span>应用管理</a></li>
-            <li><a href="{:U('Admin/Score/scoreDetail')}"><span class="icon icon-chart"></span>积分管理</a></li>
+            <li><a href="{:U('Admin/Check/index')}"><span class="icon icon-pencil"></span>审核</a></li>
+            <li><a href="{:U('Admin/Relace/index')}"><span class="icon icon-message"></span>发布</a></li>
+            <li><a href="{:U('Admin/Manage/index')}"><span class="icon icon-speech"></span>管理</a></li>
+            <li><a href="{:U('Admin/Score/index')}"><span class="icon icon-chart"></span>积分</a></li>
         </ul>
     </div><!--header-->
 
     <div class="vernav2 iconmenu">
         <ul>
-            <li><a href="#formsub" class="editor">用户权限</a>
-                <span class="arrow"></span>
-                <ul id="formsub">
-                    <li><a href="{:U('Admin/Rbac/index')}">用户列表</a></li>
-                    <li><a href="{:U('Admin/Rbac/role')}">权限列表</a></li>
-                    <li><a href="{:U('Admin/Rbac/node')}">节点列表</a></li>
-                </ul>
+            <li><a href="{:U('Admin/Check/index')}" class="editor">审核</a>
+                <!--<span class="arrow"></span>-->
+                <!--<ul id="formsub">-->
+                    <!--<li><a href="{:U('Admin/Rbac/index')}">用户列表</a></li>-->
+                    <!--<li><a href="{:U('Admin/Rbac/role')}">权限列表</a></li>-->
+                    <!--<li><a href="{:U('Admin/Rbac/node')}">节点列表</a></li>-->
+                <!--</ul>-->
             </li>
-            <li><a href="#project" class="elements">应用管理</a>
-                <span class="arrow"></span>
-                <ul id="project">
-                    <li><a href="#">应用列表</a></li>
+            <li><a href="{:U('Admin/Relace/index')}" class="elements">发布</a>
+                <!--<span class="arrow"></span>-->
+                <!--<ul id="project">-->
+                    <!--<li><a href="#">应用列表</a></li>-->
 
-                </ul>
+                <!--</ul>-->
             </li>
-            <li><a href="#integral" class="support">积分管理</a>
-                <span class="arrow"></span>
-                <ul id="integral">
-                    <li><a href="{:U('Admin/Score/scoreDetail')}">积分细则</a></li>
-                    <li><a href="{:U('Admin/Score/scoreLevel')}">积分等级</a></li>
+            <li><a href="{:U('Admin/Manage/index')}" class="tables">管理</a>
+                <!--<span class="arrow"></span>-->
+                <!--<ul id="integral">-->
+                    <!--<li><a href="{:U('Admin/Score/scoreDetail')}">积分细则</a></li>-->
+                    <!--<li><a href="{:U('Admin/Score/scoreLevel')}">积分等级</a></li>-->
 
-                </ul>
+                <!--</ul>-->
             </li>
+            <li><a href="{:U('Admin/Score/index')}" class="support">积分</a></li>
         </ul>
         <a class="togglemenu"></a>
         <br /><br />

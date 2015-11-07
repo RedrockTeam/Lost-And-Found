@@ -8,7 +8,7 @@
 namespace Admin\Controller;
 use Think\Controller;
 
-class ManageControler extends CommonController{
+class ManageController extends CommonController{
 
     /**
      * 管理发布信息页面
