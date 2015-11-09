@@ -14,7 +14,7 @@ class ManageController extends CommonController{
      * 管理发布信息页面
      */
     public function index() {
-        $list = M('product_list')->select();
+        $list = M('product_list')->where('status = 0')->select();
 
         $this->assign('list', $this->_getList($list));
         $this->display();
