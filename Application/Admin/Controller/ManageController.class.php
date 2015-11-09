@@ -14,9 +14,41 @@ class ManageController extends CommonController{
      * 管理发布信息页面
      */
     public function index() {
-        $list = M('product_list')->where('status = 0')->select();
 
-        $this->assign('list', $this->_getList($list));
+        $searchName = I('search');
+        if ($searchName !== "") {   //按nickname查询
+
+            $where['status'] = 0;
+            $where['pro_name'] = array('like','%'.$searchName.'%');
+
+            $count = M('product_list')
+                ->where($where)
+                ->count();
+
+            $Page = new \Think\Page($count,10);// 实例化分页类
+            $show = $Page->show();// 分页显示输出
+            $list = M('product_list')
+                ->limit($Page->firstRow.','.$Page->listRows)
+                ->where($where)
+                ->select();
+        }else{
+
+            $count = M('product_list')
+                ->where('status = 0')
+                ->count();
+
+            $Page = new \Think\Page($count,10);// 实例化分页类
+            $show = $Page->show();// 分页显示输出
+            $list = D('product_list')
+                ->where('status = 0')
+//                ->order(array('stu_num' => 'desc'))
+                ->limit($Page->firstRow.','.$Page->listRows)
+                ->select();
+        }
+
+        $this->assign('list',$this->_getList($list));// 赋值数据集
+        $this->assign('show',$show);// 赋值分页输出
+
         $this->display();
     }
 
