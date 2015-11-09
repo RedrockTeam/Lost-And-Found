@@ -73,9 +73,15 @@ jQuery(document).ready(function(){
 	///// DELETE INDIVIDUAL ROW IN A TABLE /////
 	jQuery('.stdtable a.delete').click(function(){
 		var c = confirm('Continue delete?');
-		if(c) jQuery(this).parents('tr').fadeOut(function(){ 
-			jQuery(this).remove();
-		});
+		if(c) {
+
+			return true;
+
+			jQuery(this).parents('tr').fadeOut(function () {
+				jQuery(this).remove();
+
+			});
+		}
 		return false;
 	});
 	

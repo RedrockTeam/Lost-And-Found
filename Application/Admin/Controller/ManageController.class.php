@@ -44,7 +44,7 @@ class ManageController extends CommonController{
     public function deleteHandle(){
         $r = M('product_list')->where(array('pro_id' => I('uid')))->delete();
         if($r == 1){
-            $this->success('删除成功!');
+            $this->redirect('Manage/index', array('cate_id' => 2), 0, '删除成功');
         }else{
             $this->error('删除失败');
         }
