@@ -35,6 +35,18 @@ class IndexController extends CommonController {
     }
 
     /**
+     * 检查是否关注重邮小帮手
+     * @param $openId
+     * @return mixed 关注的话返回200
+     */
+    private function _checkCareXBS($openId) {
+        $url = 'openidVerify';
+        $info = $this->_curl($openId, $url);
+
+        return $info['status'];
+    }
+
+    /**
      * 获取用户的微信头像和微信昵称
      * @param $openId
      * @return array 返回用户昵称和头像信息
@@ -57,18 +69,6 @@ class IndexController extends CommonController {
         $info = $this->_curl(null, 'webOauth', $code);
 
         return $info['data']['openid'];
-    }
-
-    /**
-     * 检查是否关注重邮小帮手
-     * @param $openId
-     * @return mixed 关注的话返回200
-     */
-    private function _checkCareXBS($openId) {
-        $url = 'openidVerify';
-        $info = $this->_curl($openId, $url);
-
-        return $info['status'];
     }
 
     /**
@@ -114,7 +114,7 @@ class IndexController extends CommonController {
         curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
         $return = curl_exec($ch);
         curl_close($ch);
-        $result = json_decode($return, true);    //json字符串转化为数组
+        $result = json_decode($return, true);
 
         return $result;
     }
