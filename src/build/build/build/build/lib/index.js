@@ -11,8 +11,6 @@ require.config({
 })
 
 
-
-requirejs(['zepto', 'fastclick'],function(zepto,fc){
-    console.log(zepto("body"));
-    console.log(fc);
+define(['fastclick','zepto'],function(fc,$){
+    console.log($)
 })

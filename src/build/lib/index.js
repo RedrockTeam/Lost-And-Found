@@ -12,5 +12,5 @@ require.config({
 
 
 requirejs(['fastclick','zepto'],function(fc,$){
-    console.log($);
+
 })

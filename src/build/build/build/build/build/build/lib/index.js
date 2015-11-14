@@ -13,10 +13,6 @@ require.config({
 
 
 requirejs(['zepto', 'fastclick'],function($,fc){
-    console.log($);
+    console.log($("body"));
     console.log(fc);
 })
-
-//define([fastclick],function(fc){
-//    console.log(fc);
-//})

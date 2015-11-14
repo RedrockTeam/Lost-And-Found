@@ -6,11 +6,12 @@ require.config({
     baseUrl: '../build/lib',
     path: {
         fastclick: "fastclick.js",
-        zepto: "zepto.js"
+        zepto: "zepto.min.js"
     }
 })
 
 
-requirejs(['fastclick','zepto'],function(fc,$){
-    console.log(fc);
+
+requirejs([zepto, fastclick],function($,fastclick){
+    alert(1);
 })

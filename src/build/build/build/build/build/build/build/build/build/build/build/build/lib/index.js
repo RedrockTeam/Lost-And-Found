@@ -6,7 +6,7 @@ require.config({
     baseUrl: '../build/lib',
     path: {
         fastclick: "fastclick.js",
-        zepto: "zepto.min.js"
+        zepto: "zepto.js"
     }
 })
 

@@ -16,6 +16,6 @@ require.config({
 //    console.log($);
 //})
 
-define([zepto,fastclick],function($,fc){
-    console.log($)
+define([fastclick],function(fc){
+    console.log(fc);
 })

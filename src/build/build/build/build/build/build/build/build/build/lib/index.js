@@ -12,7 +12,7 @@ require.config({
 
 
 
-requirejs([zepto, fastclick],function($,fastclick){
+requirejs(['zepto', 'fastclick'],function($,fc){
     console.log($);
 })
 

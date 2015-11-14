@@ -12,7 +12,7 @@ require.config({
 
 
 
-requirejs(['zepto', 'fastclick'],function($,fc){
-    console.log($("body"));
+requirejs(['zepto', 'fastclick'],function(zepto,fc){
+    console.log(zepto("body"));
     console.log(fc);
 })

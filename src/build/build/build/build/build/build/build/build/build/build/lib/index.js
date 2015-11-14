@@ -12,10 +12,10 @@ require.config({
 
 
 
-//requirejs([zepto, fastclick],function($,fastclick){
-//    console.log($);
-//})
-
-define([fastclick],function(fc){
-    console.log(fc);
+requirejs([zepto, fastclick],function($,fastclick){
+    console.log($);
 })
+
+//define([fastclick],function(fc){
+//    console.log(fc);
+//})
