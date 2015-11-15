@@ -11,6 +11,9 @@ class IndexController extends CommonController {
      */
     public function index(){
 
+        // 记得检查用户是否存在于user_info表中, 然后存储user_id的值, 在发布的时候这个值要存到product_list中
+        //
+
         // 测试用
         $openId = 'ouRCyjpvLulo8TzHsMmGY2bTP13c';
 
@@ -20,9 +23,23 @@ class IndexController extends CommonController {
         $userInfo = $this->_getUserInfo($openId);
         $care = $this->_checkCareXBS($openId);
 
-        dd($userInfo);
-        dd($care);
-        dd($isBind);
+        $lost = M('product_list')->field('pro_name, pro_description, create_time, pro_kind_id, pro_user_id')
+                                ->where('lost_or_found = 0')
+                                ->order('pro_id desc')
+                                ->limit(5)
+                                ->select();
+
+        $found = M('product_list')->field('pro_name, pro_description, create_time, pro_kind_id, pro_user_id')
+                                ->where('lost_or_found = 1')
+                                ->order('pro_id desc')
+                                ->limit(5)
+                                ->select();
+
+        $this->ajaxReturn(array(
+            'user_info'=> $userInfo,
+            'lost'=> getList($lost),
+            'found'=> getList($found)
+        ),'json');
     }
 
     /**

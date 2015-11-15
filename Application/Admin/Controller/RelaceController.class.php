@@ -77,6 +77,7 @@ class RelaceController extends CommonController{
             'connect_info'=> $info,
             'connect_people'=> $post['contact_people'],
             'pro_kind_id'=> $post['kind'],
+            'pro_user_id'=> 1,
             'create_time'=> time(),
             'lost_or_found'=> $post['status'],
             'check_state'=> 1,
