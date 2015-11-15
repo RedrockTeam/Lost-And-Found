@@ -30,6 +30,7 @@ class ManageController extends CommonController{
             $list = M('product_list')
                 ->limit($Page->firstRow.','.$Page->listRows)
                 ->where($where)
+                ->order('pro_id desc')
                 ->select();
         }else{
 
@@ -41,7 +42,7 @@ class ManageController extends CommonController{
             $show = $Page->show();// 分页显示输出
             $list = D('product_list')
                 ->where('status = 0')
-//                ->order(array('stu_num' => 'desc'))
+                ->order('pro_id desc')
                 ->limit($Page->firstRow.','.$Page->listRows)
                 ->select();
         }
