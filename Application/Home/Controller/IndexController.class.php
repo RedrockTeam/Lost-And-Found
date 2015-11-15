@@ -29,11 +29,12 @@ class IndexController extends CommonController {
                                 ->limit(5)
                                 ->select();
 
-        $found = M('product_list')->field('pro_name, pro_description, create_time, pro_kind_id, pro_user_id')
-                                ->where('lost_or_found = 1')
-                                ->order('pro_id desc')
-                                ->limit(5)
-                                ->select();
+        $found = M('product_list')
+                ->field('pro_name, pro_description, create_time, pro_kind_id, pro_user_id')
+                ->where('lost_or_found = 1')
+                ->order('pro_id desc')
+                ->limit(5)
+                ->select();
 
         $this->ajaxReturn(array(
             'user_info'=> $userInfo,
