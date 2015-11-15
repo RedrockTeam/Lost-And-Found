@@ -14,6 +14,7 @@ class RelaceController extends CommonController{
      * 发布信息页面
      */
     public function index() {
+//        dd($this->_getContact());
         $this->assign('contact', $this->_getContact());
         $this->assign('kinds', $this->_getKinds());
         $this->display();
@@ -32,9 +33,12 @@ class RelaceController extends CommonController{
      * 获取联系方式
      */
     private function _getContact() {
+
+        $info = M('user_info')->where('user_id = 1')->find();
         $contact = array(
-            'info'=> '联系电话 112233445',
-            'people'=> '青协'
+            'phone' => $info['phone_num'],
+            'qq' => $info['tencent_num'],
+            'people'=> $info['stu_name']
         );
         return $contact;
     }
@@ -47,10 +51,20 @@ class RelaceController extends CommonController{
         // 获取post过来的数组
         $post = I('post.');
 
+        $mark = 0;
+        $info = '电话: '.$post['contact_phone'].' QQ: '.$post['contact_qq'];
+
         // 判断不能为空值
         foreach($post as $key => $value){
             if($value == null){
-                $this->error('数据填写不能为空!');
+                if($key == 'contact_phone') {
+                    $mark = 1;
+                    $info = 'QQ: '.$post['contact_qq'];
+                }else if($mark == 0 && $key == 'contact_qq') {
+                    $info = '电话: '.$post['contact_phone'];
+                }else {
+                    $this->error('数据填写不能为空! ');
+                }
             }
         }
 
@@ -60,7 +74,7 @@ class RelaceController extends CommonController{
             'pro_description'=> $post['remark'],
             'L_or_F_time'=> $this->_timeStyle(I('post.time')),
             'L_or_F_place'=> $post['place'],
-            'connect_info'=> $post['contact_info'],
+            'connect_info'=> $info,
             'connect_people'=> $post['contact_people'],
             'pro_kind_id'=> $post['kind'],
             'create_time'=> time(),
