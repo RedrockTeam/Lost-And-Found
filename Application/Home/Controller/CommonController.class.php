@@ -56,7 +56,6 @@ class CommonController extends RestController{
      */
     public function _getOpenId($code) {
         $info = $this->_curl(null, 'webOauth', $code);
-
         return $info['data']['openid'];
     }
 
@@ -66,8 +65,7 @@ class CommonController extends RestController{
      * @return int
      */
     public function _getStuNum($openid){
-
-        $stuNum = 0;
+        $stuNum = $this->_curl($openid, "bindVerify")['stuId'];
         return $stuNum;
     }
 
