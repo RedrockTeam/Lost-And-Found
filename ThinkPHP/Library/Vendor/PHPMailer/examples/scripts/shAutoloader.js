@@ -8,15 +8,15 @@ var sh = SyntaxHighlighter;
  * There are two syntaxes that autoload understands. For example:
  *
  * SyntaxHighlighter.autoloader(
- *     [ 'applescript',          'Scripts/shBrushAppleScript.js' ],
- *     [ 'actionscript3', 'as3', 'Scripts/shBrushAS3.js' ]
+ *     [ 'applescript',          'Scripts/shBrushAppleScript.lib' ],
+ *     [ 'actionscript3', 'as3', 'Scripts/shBrushAS3.lib' ]
  * );
  *
  * or a more easily comprehendable one:
  *
  * SyntaxHighlighter.autoloader(
- *     'applescript       Scripts/shBrushAppleScript.js',
- *     'actionscript3 as3 Scripts/shBrushAS3.js'
+ *     'applescript       Scripts/shBrushAppleScript.lib',
+ *     'actionscript3 as3 Scripts/shBrushAS3.lib'
  * );
  */
 sh.autoloader = function()

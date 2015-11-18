@@ -269,7 +269,7 @@
   margin: 0 4px;
   position: absolute;
   text-align: center;
-  width: 321px; /* This should by dynamic with js */
+  width: 321px; /* This should by dynamic with lib */
   z-index: 1;
 }
 .chzn-container .chzn-results-scroll span {
