@@ -10,7 +10,7 @@
 jQuery().ready(function() {
 		jQuery('textarea.tinymce').tinymce({
 			// Location of TinyMCE script
-			script_url : 'js/plugins/tinymce/tiny_mce.js',
+			script_url : 'lib/plugins/tinymce/tiny_mce.lib',
 
 			// General options
 			theme : "advanced",
@@ -31,10 +31,10 @@ jQuery().ready(function() {
 			content_css : "css/plugins/tinymce.css",
 
 			// Drop lists for link/image/media/template dialogs
-			template_external_list_url : "lists/template_list.js",
-			external_link_list_url : "lists/link_list.js",
-			external_image_list_url : "lists/image_list.js",
-			media_external_list_url : "lists/media_list.js",
+			template_external_list_url : "lists/template_list.lib",
+			external_link_list_url : "lists/link_list.lib",
+			external_image_list_url : "lists/image_list.lib",
+			media_external_list_url : "lists/media_list.lib",
 
 			// Replace values for the template plugin
 			template_replace_values : {
