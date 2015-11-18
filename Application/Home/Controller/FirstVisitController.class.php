@@ -27,7 +27,7 @@ class FirstVisitController extends CommonController {
         $where['stu_num'] = I('stu_num');
         $headUrl = $this->_getUserInfo(session('openid'))['headImageUrl'];
         $user = M('user_info')->where($where)->find();
-
+        
         // 如果用户已存在
         if($user){
             $data = array(
