@@ -38,3 +38,25 @@ function dd($var, $echo=true, $label=null, $strict=false) {
     }else
         return die($output);
 }
+
+/**
+ * 把种类信息添加到数组里
+ * @param $list 原数组
+ * @return array 添加了种类信息的数组
+ */
+function getList($list) {
+    $reList = [];
+    foreach($list as $k => $v){
+        $condition['kind_id'] = $v['pro_kind_id'];
+        $kindName = M('product_kinds')->where($condition)->find()['kind_name'];
+        $condition2['user_id'] = $v['pro_user_id'];
+        $userName = M('user_info')->where($condition2)->find()['stu_name'];
+        $url = M('user_info')->where($condition2)->find()['headImgUrl'];
+        $v['kind_name'] = $kindName;
+        $v['relace_user_name'] = $userName;
+        $v['relace_head_url'] = $url;
+        array_push($reList, $v);
+    }
+
+    return $reList;
+}

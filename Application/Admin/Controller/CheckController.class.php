@@ -46,28 +46,10 @@ class CheckController extends CommonController{
                 ->select();
         }
 
-        $this->assign('list',$this->_getList($list));// 赋值数据集
+        $this->assign('list', getList($list));// 赋值数据集
         $this->assign('show',$show);// 赋值分页输出
 
         $this->display();
-    }
-
-    /**
-     * 把种类信息添加到数组里
-     * @param $list 原数组
-     * @return array 添加了种类信息的数组
-     */
-    private function _getList($list) {
-        $reList = [];
-        foreach($list as $k => $v){
-            $condition['kind_id'] = $v['pro_kind_id'];
-            $kindName = M('product_kinds')->where($condition)->find()['kind_name'];
-
-            $v['kind_name'] = $kindName;
-            array_push($reList, $v);
-        }
-
-        return $reList;
     }
 
     /**
