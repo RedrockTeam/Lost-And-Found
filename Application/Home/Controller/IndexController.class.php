@@ -12,30 +12,60 @@ class IndexController extends CommonController {
      */
     public function index(){
 
+        // 获取到openid并且存到session
         // $code = I('get.code');
         // $openId = $this->_getOpenId($code);
-        
         session('openid', 'ouRCyjsp3eo3FJil24fV625V_6no');
-        
-//         $isBind = $this->_checkBind($openId);
-//         $care = $this->_checkCareXBS($openId);
-        $stuNum = $this->_getStuNum(session('openid'));
 
+        //判断是否绑定学号, 是否关注重邮小帮手
+        // $isBind = $this->_checkBind($openId);
+        // $care = $this->_checkCareXBS($openId);
+
+        // 获取学号和微信昵称以及头像
+        $stuNum = $this->_getStuNum(session('openid'));
         $userInfo = $this->_getUserInfo(session('openid'));
         
         // 判断是否第一次访问, 传值为学号
         $first = $this->_isFirstVisit($stuNum);
 
+
+        // 获取失物招领信息, 限制为5条
         $lost = M('product_list')->field('pro_name, pro_description, create_time, pro_kind_id, pro_user_id')
-                                 ->where('lost_or_found = 0')->order('pro_id desc')->limit(5)->select();
+                                 ->where(array('lost_or_found' => 0, 'status' => 0))->order('pro_id desc')->limit(5)->select();
         $found = M('product_list')->field('pro_name, pro_description, create_time, pro_kind_id, pro_user_id')
-                                  ->where('lost_or_found = 1')->order('pro_id desc')->limit(5)->select();
+                                  ->where(array('lost_or_found' => 1, 'status' => 0))->order('pro_id desc')->limit(5)->select();
         $this->ajaxReturn(array(
             'is_ifrst' => $first,
             'user_info'=> $userInfo,
             'lost'=> getList($lost),
             'found'=> getList($found)
         ),'json');
+    }
+
+    /**
+     * 首页搜索方法
+     */
+    public function search(){
+
+        //获取搜索的物品名称
+        $searchName = I('searchName');
+
+        $where['pro_name'] = array('like','%'.$searchName.'%');
+        $where['status'] = 0;
+        $result = M('product_list')->field('pro_name, pro_description, create_time, pro_kind_id, pro_user_id')
+                                 ->where($where)
+                                 ->order('pro_id desc')->limit(5)->select();
+        $this->ajaxReturn(array(
+           'searchResult' => getList($result)
+        ));
+
+    }
+
+    /**
+     * 分页获取信息
+     */
+    public function nextPage(){
+
     }
 
     /**
