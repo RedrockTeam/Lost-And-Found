@@ -66,6 +66,20 @@ class IndexController extends CommonController {
      */
     public function nextPage(){
 
+        //获取要去的的分页信息
+        $from = I('from');
+        $num  = I('num');
+        $LorF = I('LorF');
+
+        $result = M('product_list')->field('pro_name, pro_description, create_time, pro_kind_id, pro_user_id')
+                                ->where(array(
+                                    'lost_or_found' => $LorF,
+                                    'status' => 0
+                                ))
+                                ->order('pro_id desc')->limit($from, $num)->select();
+        $this->ajaxReturn(array(
+            'nextPage' => getList($result)
+        ));
     }
 
     /**
