@@ -9,11 +9,12 @@ class FirstVisitController extends CommonController {
 
     /**
      * 第一次访问首页
+     * 返回用户信息包括 昵称, 头像地址, 真实姓名, 学号
      */
     public function index(){
         $userInfo = $this->_getUserInfo(session('openid'));
-        $userInfo['realName'] = $this->_getRealName();
-        $userInfo['stu_num'] = $this->_getStuNum();
+        $userInfo['realName'] = $this->_getRealName(session('openid'));
+        $userInfo['stu_num'] = $this->_getStuNum(session('openid'));
 
         $this->ajaxReturn(array(
             'user_info'=> $userInfo

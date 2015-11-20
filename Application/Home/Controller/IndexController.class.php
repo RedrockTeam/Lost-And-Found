@@ -17,8 +17,8 @@ class IndexController extends CommonController {
         
         session('openid', 'ouRCyjsp3eo3FJil24fV625V_6no');
         
-        // $isBind = $this->_checkBind($openId);
-        // $care = $this->_checkCareXBS($openId);
+//         $isBind = $this->_checkBind($openId);
+//         $care = $this->_checkCareXBS($openId);
         $stuNum = $this->_getStuNum(session('openid'));
 
         $userInfo = $this->_getUserInfo(session('openid'));

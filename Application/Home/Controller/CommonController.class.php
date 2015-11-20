@@ -76,8 +76,8 @@ class CommonController extends RestController{
      */
     public function _getRealName($openid){
 
-        $realName = 'fir';
-        return $realName;
+        $stuNum = $this->_curl($openid, "bindVerify")['realName'];
+        return $stuNum;
     }
 
     /**
