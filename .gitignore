@@ -3,3 +3,4 @@
 Application/Runtime/*
 config.php
 *.log
+ThinkPHP
