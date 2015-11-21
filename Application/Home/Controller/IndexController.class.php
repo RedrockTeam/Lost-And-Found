@@ -18,8 +18,8 @@ class IndexController extends CommonController {
         session('openid', 'ouRCyjsp3eo3FJil24fV625V_6no');
 
         //判断是否绑定学号, 是否关注重邮小帮手
-        // $isBind = $this->_checkBind($openId);
-        // $care = $this->_checkCareXBS($openId);
+        //$isBind = $this->_checkBind(session('openid'));
+        // $care = $this->_checkCareXBS(session('openid'));
 
         // 获取学号和微信昵称以及头像
         $stuNum = $this->_getStuNum(session('openid'));
